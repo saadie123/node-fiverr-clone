@@ -33,12 +33,19 @@ router.post('/add-new-gig', (req, res) => {
                 callback(err, gig);
             });
         },
-        function(callback,gig){
+        function(gig){
             User.update({_id:req.user.id},{$push:{gigs: gig._id}},function(err, count){
                 res.redirect('/my-gigs');
             });
         }
     ])
+});
+
+router.get('/service-detail/:id', (req, res) => {
+    Gig.findOne({_id: req.params.id}).populate('owner')
+    .exec(function(err, gig){
+        res.render('main/service-detail',{gig});
+    });
 });
 
 module.exports = router;
