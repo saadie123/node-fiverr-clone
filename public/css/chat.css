@@ -13,7 +13,9 @@ img {
 	border-right: 1px solid #DDD;
 	box-sizing: border-box;
 }
-
+.pic{
+	text-align: center;
+}
 .pic img {
 	width: 40px;
 	height: auto;
