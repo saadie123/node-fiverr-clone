@@ -25,18 +25,20 @@ mongoose.connect(config.database, function(err) {
   console.log("Connected to the database");
 });
 
+const sessionMiddleware = session({
+  resave: true,
+  saveUninitialized: true,
+  secret: config.secret,
+  store: new MongoStore({ url: config.database, autoReconnect: true })
+});
+
 app.engine('.hbs', expressHbs({ defaultLayout: 'layout', extname: '.hbs' }));
 app.set('view engine', 'hbs');
 app.use(express.static(__dirname + '/public'));
 app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(session({
-  resave: true,
-  saveUninitialized: true,
-  secret: config.secret,
-  store: new MongoStore({ url: config.database, autoReconnect: true })
-}));
+app.use(sessionMiddleware);
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -53,6 +55,10 @@ io.use(passportSocketIo.authorize({
   success:      onAuthorizeSuccess,  // *optional* callback on success - read more below
   fail:         onAuthorizeFail,     // *optional* callback on fail/error - read more below
 }));
+
+io.use(function(socket, next){
+  sessionMiddleware(socket.request, socket.request.res, next);
+});
 
 function onAuthorizeSuccess(data, accept){
   console.log('successful connection to socket.io');

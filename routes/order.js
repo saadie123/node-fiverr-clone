@@ -52,9 +52,17 @@ router.post('/payment',(req, res)=>{
 
 router.get('/users/:userId/orders/:orderId', (req, res) =>{
     req.session.orderId = req.params.orderId;
-    Order.findOne({_id:req.params.orderId}).populate('buyer').populate('seller').populate('gig')
+    Order.findOne({_id:req.params.orderId}).populate('buyer').populate('seller').populate('gig').deepPopulate('messages.owner')
     .exec(function(err, order){
-        res.render('order/order-room',{layout: 'chat-layout',order});
+        res.render('order/order-room',{layout: 'chat-layout',order,messages:order.messages, helpers:{
+            if_equals: function(a, b, options) {
+                if(a.equals(b)){
+                    return options.fn(this);
+                } else{
+                    return options.inverse(this);
+                }
+            }
+        }});
     })
 });
 
