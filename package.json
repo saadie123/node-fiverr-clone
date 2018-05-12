@@ -4,7 +4,8 @@
   "description": "A Fiverr clone application built with Nodejs (Express, Socket.io, Stripe)",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "Saad",
   "license": "ISC",
@@ -21,6 +22,7 @@
     "hbs": "^4.0.1",
     "mongoose": "^4.9.4",
     "morgan": "^1.8.1",
+    "nodemon": "^1.17.4",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
     "passport.socketio": "^3.7.0",

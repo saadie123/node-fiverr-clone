@@ -19,53 +19,18 @@
 		Newest Gigs
 	</h1>
 	<div class="row">
+		{{#each gigs}}
 		<div class="col-md-3">
 			<div class="gig-card">
-				<img src="/img/blog.jpg" />
+			<a href="/service-detail/{{id}}"><img src="/img/copywrite.jpg" /></a>
 				<h4>
-					I will write 600 words blog posts
+					{{ title }}
 				</h4>
 				<h3>
-					$3
+					${{price}}
 				</h3>
 			</div>
 		</div>
-		<div class="col-md-3">
-			<div class="gig-card">
-
-				<img src="/img/data.jpg" />
-				<h4>
-					I will be your virtual assistant for data entry
-				</h4>
-				<h3>
-					$3
-				</h3>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="gig-card">
-
-				<img src="/img/copywrite.jpg" />
-				<h4>
-					I will copywrite for your website
-				</h4>
-				<h3>
-					$3
-				</h3>
-			</div>
-		</div>
-		<div class="col-md-3">
-			<div class="gig-card">
-
-				<img src="/img/lyrics.jpg" />
-				<h4>
-					I will create a song for your lyrics
-				</h4>
-				<h3>
-					$3
-				</h3>
-			</div>
-		</div>
-
+		{{/each}}
 	</div>
 </div>

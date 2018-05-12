@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="overview">
+                <h2 class="text-center">Enter your gig details</h2>
+                <br>
+                <div class="new-gig-card">
+                    <form action="/add-new-gig" method="post">
+                        <div class="form-group">
+                            <label for="title">Gig title</label>
+                            <input type="text" class="form-control" placeholder="I will do something" name="title" id="title">
+                        </div>
+                        <div class="form-group">
+                            <label for="price">Gig price</label>
+                            <input type="number" min="1" class="form-control" placeholder="$3" name="price" id="price">
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Gig category</label>
+                            <select name="category" id="category" class="form-control">
+                                <option value="programming">Programming & Tech</option>
+                                <option value="website">Website</option>
+                                <option value="design">Design</option>
+                                <option value="marketing">Marketing</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="description">Gig description</label>
+                            <textarea name="description" id="description" cols="15" rows="5" class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

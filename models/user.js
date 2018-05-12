@@ -10,7 +10,7 @@ const UserSchema = new Schema({
   photo: String,
   about: String,
   gigs: [{
-     type: Schema.Types.ObjectId, ref: 'Gig'
+     type: Schema.Types.ObjectId, ref: 'Gigs'
   }]
 });
 
@@ -37,9 +37,9 @@ UserSchema.methods.comparePassword = function(password) {
 
 UserSchema.methods.gravatar = function(size) {
   if (!size) size = 200;
-  if (!this.email) return 'https://gravatar.com/avatar/?s=' + size + '&d=retro';
+  if (!this.email) return 'https://gravatar.com/avatar/?s=' + size;
   var md5 = crypto.createHash('md5').update(this.email).digest('hex');
-  return 'https://gravatar.com/avatar/' + md5 + '?s=' + size + '&d=retro';
+  return 'https://gravatar.com/avatar/' + md5 + '?s=' + size;
 };
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Users', UserSchema);
