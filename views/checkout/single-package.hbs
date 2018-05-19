@@ -17,8 +17,8 @@
                             <span class="input-group-btn">
                                 <button class="btn btn-success btn-block" id="promocodeButton">Apply</button>
                             </span>
-                            <p class="text-center" id="promocodeResponse"></p>
                         </div>
+                        <p class="text-center" id="promocodeResponse"></p>
                         <hr>
                         <div class="space-between">
                             <h4><span>Subtotal:</span> <span class="dollar fee">${{ gig.price }}</span></h4>
@@ -29,7 +29,7 @@
                         </div>
                         <hr>
                         <div class="space-between">
-                            <h3><span>Total:</span> <span class="dollar fee">${{totalPrice}}</span></h3>
+                            <h3><span>Total:</span> <span class="dollar fee" id="totalPrice">${{totalPrice}}</span></h3>
                         </div>
                         <hr>
                         <a href="/payment" class="btn btn-success btn-lg proceed-btn">Proceed to payment</a>
