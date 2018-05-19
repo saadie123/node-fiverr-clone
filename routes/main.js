@@ -4,11 +4,28 @@ const Gig = require('../models/gig');
 const User = require('../models/user');
 const Promocode = require('../models/promocode');
 
+const algoliasearch = require('algoliasearch');
+var client = algoliasearch('S61XR194QB', '6d9eb842bb4f6fa9868bb1f48c698e10');
+var index = client.initIndex('GigSchema');
+
 router.get('/', (req, res) => {
     Gig.find({},function(err, gigs){
         res.render('main/home',{gigs});
     }).count(8);
 });
+
+router.route('/search')
+.get((req,res)=>{
+    if(req.query.q){
+        index.search(req.query.q, (err,content)=>{
+            res.render('main/search-results',{content:content.hits, searchResult:req.query.q});
+        });
+    }
+})
+.post((req,res)=>{
+    res.redirect('/search/?q='+req.body.search);
+})
+
 
 router.get('/my-gigs', (req,res) => {
     Gig.find({owner: req.user.id}, function(err, gigs){
