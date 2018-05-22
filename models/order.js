@@ -4,7 +4,7 @@ const deepPopulate = require('mongoose-deep-populate')(mongoose);
 const orderSchema = new mongoose.Schema({
     buyer:{type: mongoose.SchemaTypes.ObjectId, ref:'Users'},
     seller:{type: mongoose.SchemaTypes.ObjectId, ref:'Users'},
-    gig:{type: mongoose.SchemaTypes.ObjectId, ref:'Gigs'},
+    gig:{type: mongoose.SchemaTypes.ObjectId, ref:'gigs'},
     messages: [{
         type: mongoose.SchemaTypes.ObjectId, ref:'Messages'
     }],

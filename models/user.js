@@ -10,8 +10,11 @@ const UserSchema = new Schema({
   photo: String,
   about: String,
   gigs: [{
-     type: Schema.Types.ObjectId, ref: 'Gigs'
-  }]
+     type: Schema.Types.ObjectId, ref: 'gigs'
+  }],
+  cart: [{
+    type: Schema.Types.ObjectId, ref: 'gigs'
+ }]
 });
 
 UserSchema.pre('save', function(next) {

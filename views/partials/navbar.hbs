@@ -52,6 +52,9 @@
             <li><a href="/logout">Logout</a></li>
           </ul>
         </li>
+        <li>
+          <a href="/checkout/process-cart"><i class="fa fa-shopping-cart"><span class="badge">{{user.cart.length}}</span></i></a>
+        </li>
 
         {{else }}
         <li><a href="/login">Sign In</a></li>
